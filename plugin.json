@@ -1,0 +1,24 @@
+{
+  "type": "panel",
+  "name": "Process Flow",
+  "id": "solmon-pflow-panel",
+  "info": {
+    "keywords": ["process", "flow", "diagram"],
+    "description": "Simple process flow visualization",
+    "author": {
+      "name": "solmon"
+    },
+    "logos": {},
+    "screenshots": [],
+    "version": "1.0.0",
+    "updated": "2025-08-30"
+  },
+  "options": {},
+  "includes": [
+    {
+      "type": "panel",
+      "name": "module",
+      "path": "dist/module.js"
+    }
+  ]
+}

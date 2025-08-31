@@ -1,0 +1,49 @@
+{
+  "name": "grafana-pflow-plugin",
+  "version": "1.0.0",
+  "description": "process flow panel plugin",
+  "homepage": "https://github.com/solmon/grafana-pflow-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/solmon/grafana-pflow-plugin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solmon/grafana-pflow-plugin.git"
+  },
+  "license": "MIT",
+  "author": "solmon",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+  "test": "vitest run",
+  "build": "esbuild src/module.tsx --bundle --minify --sourcemap --outfile=dist/module.js --platform=browser --target=es2017 --loader:.tsx=tsx --loader:.ts=ts --external:react --external:react-dom",
+  "clean": "rm -rf dist dev/dev-bundle.js",
+  "prepare": "npm run build",
+  "dev:build": "esbuild dev/dev-entry.tsx --bundle --sourcemap --outfile=dev/dev-bundle.js --platform=browser --target=es2017 --loader:.tsx=tsx --loader:.ts=ts",
+  "dev:serve": "http-server dev -p 8088 -c-1",
+  "dev": "npm run dev:build && npm run dev:serve"
+  }
+  ,"peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "@grafana/data": "*"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+  "typescript": "^5.0.0",
+  "vitest": "^0.34.0",
+  "@testing-library/react": "^14.0.0",
+  "@testing-library/jest-dom": "^6.0.0",
+  "jsdom": "^22.0.0",
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "http-server": "^14.1.1"
+  }
+  ,"dependencies": {
+    "reactflow": "^11.0.0",
+    "dagre": "^0.8.5"
+  }
+
+}

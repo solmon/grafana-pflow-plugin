@@ -1,0 +1,22 @@
+{
+  "nodes": [
+  { "id": "browse", "label": "Browse Products", "type": "start", "kpis": { "active": 1240, "errors": 2, "avg_ms": 120 } },
+  { "id": "add_cart", "label": "Add to Cart", "type": "action", "kpis": { "active": 820, "errors": 5, "avg_ms": 80 } },
+  { "id": "checkout", "label": "Checkout", "type": "action", "kpis": { "active": 400, "errors": 12, "avg_ms": 350 } },
+  { "id": "payment", "label": "Payment", "type": "action", "kpis": { "active": 380, "errors": 28, "avg_ms": 720 } },
+  { "id": "confirm", "label": "Order Confirmed", "type": "end", "kpis": { "active": 360, "errors": 0, "avg_ms": 40 } },
+  { "id": "ship", "label": "Shipped", "type": "action", "kpis": { "active": 300, "errors": 1, "avg_ms": 480 } },
+  { "id": "deliver", "label": "Delivered", "type": "end", "kpis": { "active": 295, "errors": 0, "avg_ms": 120 } },
+  { "id": "cancel", "label": "Order Cancelled", "type": "end", "kpis": { "active": 40, "errors": 0, "avg_ms": 60 } }
+  ],
+  "edges": [
+    { "from": "browse", "to": "add_cart" },
+    { "from": "add_cart", "to": "checkout" },
+    { "from": "checkout", "to": "payment" },
+    { "from": "payment", "to": "confirm" },
+    { "from": "confirm", "to": "ship" },
+    { "from": "ship", "to": "deliver" },
+    { "from": "checkout", "to": "cancel", "label": "cancel" },
+    { "from": "payment", "to": "cancel", "label": "payment_failed" }
+  ]
+}

@@ -1,0 +1,128 @@
+.pflow-root { font-family: Arial, sans-serif; padding: 8px; box-sizing: border-box; }
+
+/* Theme variables */
+.pflow-root.theme-light {
+	--bg: #ffffff;
+	--panel-bg: #f7f9fc;
+	--node-bg: #eef6ff;
+	--node-border: #cfe3ff;
+	--text: #111827;
+	--muted: #6b7280;
+	--edge: #374151;
+	background: var(--panel-bg);
+	color: var(--text);
+}
+
+.pflow-root.theme-dark {
+	--bg: #0b1220;
+	--panel-bg: #071025;
+	--node-bg: #0f1724;
+	--node-border: #16405a;
+	--text: #e6eef8;
+	--muted: #9ca3af;
+	--edge: #94a3b8;
+	background: var(--panel-bg);
+	color: var(--text);
+}
+
+.pflow-canvas { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+
+/* React Flow node default styles */
+.react-flow__node-default {
+	background: var(--node-bg);
+	border: 1px solid var(--node-border);
+	color: var(--text);
+	box-shadow: 0 1px 2px rgba(2,6,23,0.06);
+	border-radius: 8px;
+	padding: 8px 12px;
+}
+
+.react-flow__edge-path {
+	stroke: var(--edge);
+}
+
+/* Legacy class mapping for earlier simple nodes */
+.pflow-node { padding:8px 12px; border-radius:6px; background:var(--node-bg); border:1px solid var(--node-border); color:var(--text); }
+.pflow-node-start { background: #e6ffed; border-color: #bdebc3; }
+.pflow-node-end { background: #ffecec; border-color: #f3c0c0; }
+.pflow-edge { color:var(--muted); padding:2px 6px; }
+
+/* KPI card styles */
+.react-flow__node.kpi-node .kpi-card,
+.react-flow__node.kpi-node > .react-flow__node-content .kpi-card,
+.react-flow__node.kpi-node .kpi-card {
+	background: var(--node-bg) !important;
+	border: 1px solid var(--node-border) !important;
+	border-radius: 8px !important;
+	padding: 8px !important;
+	min-width: 140px;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.kpi-title { font-weight: 600; margin-bottom: 6px; font-size: 13px; }
+.kpi-row { display:flex; gap:8px; }
+.kpi-item { display:flex; flex-direction:column; align-items:center; }
+.kpi-value { font-weight:700; }
+.kpi-label { font-size:11px; color:var(--muted); }
+.kpi-top { display:flex; justify-content:space-between; align-items:center; }
+.kpi-badges { display:flex; gap:6px; }
+.badge { padding:4px 8px; border-radius:999px; font-weight:700; font-size:12px; color:#fff; }
+.badge-danger { background:#e11d48; }
+.badge-ok { background:#10b981; }
+.sparkline { display:block; }
+
+/* Nice rectangle card */
+.react-flow__node.rect-node .nice-card,
+.react-flow__node.rect-node > .react-flow__node-content .nice-card {
+	background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)) !important;
+	border-radius:6px !important;
+	padding:12px !important;
+	border:1px solid var(--node-border) !important;
+	min-width:220px;
+	min-height:72px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	width:100%;
+	height:100%;
+}
+.react-flow__node.rect-node .nice-title { font-weight:700; }
+
+/* Stronger fallbacks to ensure node contents are visible inside React Flow wrappers */
+.react-flow__node.kpi-node, .react-flow__node.rect-node {
+	background: transparent !important;
+}
+
+.react-flow__node.kpi-node .kpi-card,
+.react-flow__node.kpi-node > .react-flow__node-content .kpi-card,
+.react-flow__node.rect-node .nice-card,
+.react-flow__node.rect-node > .react-flow__node-content .nice-card {
+	background: var(--node-bg) !important;
+	border: 1px solid var(--node-border) !important;
+	color: var(--text) !important;
+	box-shadow: 0 6px 18px rgba(2,6,23,0.12) !important;
+	border-radius: 8px !important;
+	padding: 8px !important;
+	width: 100% !important;
+	height: 100% !important;
+	box-sizing: border-box !important;
+	overflow: visible !important;
+}
+
+.react-flow__node.kpi-node .kpi-card *,
+.react-flow__node.rect-node .nice-card * {
+	color: var(--text) !important;
+}
+
+/* Ensure the inner content is not clipped and sits above edges */
+.react-flow__node .react-flow__node-content {
+	overflow: visible !important;
+	z-index: 2;
+}
+
+/* Ensure SVG sparkline stroke uses theme color */
+.react-flow__node .sparkline path { stroke: var(--edge) !important; }
